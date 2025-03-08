@@ -100,7 +100,7 @@ def train(model,optimizer,criterion,xd, xm, edge_index, edge_index_test,edge_ind
         out2 = 1 / (1 + torch.exp(-out))
         #out = model.forward(xd, xm, edge_index, edge_index_test).squeeze(1)
         out1 = out.cpu().detach().numpy()
-        pred = (out1 >= 0.5).astype(int)
+        pred = (out2 >= 0.5).astype(int)
         #print(out.shape,edge_index_test_label.shape)
         #print(out.shape,edge_index_test_label.shape)
         loss = criterion(out, edge_index_test_label)
